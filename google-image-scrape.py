@@ -40,26 +40,25 @@ with webdriver.Chrome() as driver:
     for _ in range(2):
         driver.execute_script("window.scrollBy(0,10000)")
          
-    for x in driver.find_elements(by=By.XPATH, value='//img[contains(@class,"rg_i Q4LuWd")]'):
-       
-        counter = counter + 1
-        
-        
-        if not x.get_attribute('src') == "": 
-        
-            img = x.get_attribute('src')    
-            
-            new_filename = dest+"\img_"+str(counter)+".jpg"
-            
-            #print(new_filename)
-            try:
-                urllib.request.urlretrieve(img, new_filename)
-                salvate += 1
-            except Exception as e:
-                print(e)
-                
-                
-    print('trovate:'+str(counter)+' salvate:'+str(salvate))
-    time.sleep(0.2) 
+        for x in driver.find_elements(by=By.XPATH, value='//img[contains(@class,"rg_i Q4LuWd")]'):
+
+            counter = counter + 1
+
+
+            if not x.get_attribute('src') == "": 
+
+                img = x.get_attribute('src')    
+
+                new_img = dest+"\img_"+str(counter)+".jpg"
+
+                try:
+                    urllib.request.urlretrieve(img, new_img)
+                    salvate += 1
+                except Exception as e:
+                    print(e)
+
+
+        print('trovate:'+str(counter)+' salvate:'+str(salvate))
+        time.sleep(0.2) 
 
     driver.quit()
