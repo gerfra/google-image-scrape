@@ -5,5 +5,5 @@ Note:
 
 If you don't need to skip GDPR popup, comment this line.
 
-bt = driver.find_element(by=By.ID, value='L2AGLb')
+bt = driver.find_element(by=By.ID, value='L2AGLb')\n
 bt.click()
